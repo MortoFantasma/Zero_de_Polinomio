@@ -14,15 +14,16 @@ Este script oferece uma abordagem para o método de Newton-Raphson que se benefi
 
 O coração deste método reside na utilização da biblioteca **SymPy**, que é uma biblioteca Python para matemática simbólica. Com ela, podemos definir o polinômio de forma simbólica e, em seguida, usar a função `sp.diff()` para obter a derivada exata. Depois disso, `sp.lambdify()` é usado para converter a expressão simbólica em uma função numérica eficiente com **NumPy**.
 
-> A principal vantagem desta abordagem é a precisão inquestionável da derivada, pois ela é calculada analiticamente. No entanto, para polinômios de grau muito elevado, o custo do cálculo simbólico pode ser um fator a considerar.
+A principal vantagem desta abordagem é a precisão inquestionável da derivada, pois ela é calculada analiticamente. No entanto, para polinômios de grau muito elevado, o custo do cálculo simbólico pode ser um fator a considerar.
 
 #### Exemplo de Uso
 
-Para encontrar as raízes do polinômio `x² − 4`:
+Para encontrar as raízes do polinômio `x² − 4`:  
 
-Digite os coeficientes do polinômio (do maior grau ao termo independente), separados por espaço:
-Exemplo: para x² - 4, digite: 1 0 -4
-1 0 -4
+Digite os coeficientes do polinômio (do maior grau ao termo independente), separados por espaço:  
+Exemplo: para x² - 4, digite: 1 0 -4  
+
+1 0 -4  
 
 Saída esperada:
 
@@ -52,11 +53,12 @@ Para encontrar as raízes do polinômio `x³ − 6x² + 11x − 6`:
 
 Digite os coeficientes do polinômio (do maior grau ao termo independente), separados por espaço:  
 Exemplo: para x³ − 6x² + 11x − 6, digite: 1 -6 11 -6  
+
 1 -6 11 -6  
 
 Saída esperada:
 
-> Buscando raízes reais para o polinômio com coeficientes: [1.0, -6.0, 11.0, -6.0]  
+Buscando raízes reais para o polinômio com coeficientes: [1.0, -6.0, 11.0, -6.0]  
 
 Raízes reais encontradas (via Newton-Briot-Ruffini):  
 Raiz: 1  
