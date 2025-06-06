@@ -26,13 +26,13 @@ Exemplo: para x² - 4, digite: 1 0 -4
 
 Saída esperada:
 
-Buscando raízes reais para o polinômio com coeficientes: [1.0, 0.0, -4.0]
+Buscando raízes reais para o polinômio com coeficientes: [1.0, 0.0, -4.0]  
 
-Raízes reais encontradas (via Newton-Raphson):
-Raiz: -2
-Erro absoluto: 0.00e+00
-Raiz: 2
-Erro absoluto: 0.00e+00
+Raízes reais encontradas (via Newton-Raphson):  
+Raiz: -2  
+Erro absoluto: 0.00e+00  
+Raiz: 2  
+Erro absoluto: 0.00e+00  
 
 ---
 
@@ -44,27 +44,27 @@ Esta versão do método é projetada para ser eficiente e puramente numérica, u
 
 O algoritmo de **Briot-Ruffini** (ou divisão sintética) permite calcular o valor de um polinômio `P(x)` e de sua derivada `P′(x)` em um ponto `x₀` de forma muito eficiente, operando diretamente sobre os coeficientes do polinômio. A técnica envolve duas divisões sintéticas consecutivas para obter `P(x₀)` e `P′(x₀)`.
 
-> A principal vantagem é o desempenho, pois evita dependências simbólicas, tornando-o ideal para ambientes com restrições de performance ou bibliotecas.
+A principal vantagem é o desempenho, pois evita dependências simbólicas, tornando-o ideal para ambientes com restrições de performance ou bibliotecas.
 
 #### Exemplo de Uso
 
-Para encontrar as raízes do polinômio `x³ − 6x² + 11x − 6`:
+Para encontrar as raízes do polinômio `x³ − 6x² + 11x − 6`:  
 
-Digite os coeficientes do polinômio (do maior grau ao termo independente), separados por espaço:
-Exemplo: para x³ − 6x² + 11x − 6, digite: 1 -6 11 -6
-1 -6 11 -6
+Digite os coeficientes do polinômio (do maior grau ao termo independente), separados por espaço:  
+Exemplo: para x³ − 6x² + 11x − 6, digite: 1 -6 11 -6  
+1 -6 11 -6  
 
 Saída esperada:
 
-Buscando raízes reais para o polinômio com coeficientes: [1.0, -6.0, 11.0, -6.0]
+> Buscando raízes reais para o polinômio com coeficientes: [1.0, -6.0, 11.0, -6.0]  
 
-Raízes reais encontradas (via Newton-Briot-Ruffini):
-Raiz: 1
-Erro absoluto: 0.00e+00
-Raiz: 2
-Erro absoluto: 0.00e+00
-Raiz: 3
-Erro absoluto: 0.00e+00
+Raízes reais encontradas (via Newton-Briot-Ruffini):  
+Raiz: 1  
+Erro absoluto: 0.00e+00  
+Raiz: 2  
+Erro absoluto: 0.00e+00  
+Raiz: 3  
+Erro absoluto: 0.00e+00  
 
 ---
 
@@ -80,24 +80,22 @@ Certifique-se de ter o **Python 3.x** instalado. Você pode baixá-lo em [python
 
 #### Se você usa Git:
 
-git clone https://github.com/SeuUsuario/SeuRepositorio.git
-cd SeuRepositorio
-Ou baixe diretamente:
+git clone https://github.com/SeuUsuario/SeuRepositorio.git  
+cd SeuRepositorio  
+Ou baixe diretamente:  
 Baixe o repositório como ZIP via GitHub e extraia os arquivos em uma pasta local.
 
 3. Instale as Dependências
-No terminal, dentro da pasta do projeto:
+No terminal, dentro da pasta do projeto:  
+pip install sympy numpy  
 
-pip install sympy numpy
 Nota: sympy é necessário apenas para o script com SymPy.
 
 4. Execute os Scripts
-Para a versão com SymPy:
-
+Para a versão com SymPy:  
 python Newton-Raphson.py
 
-Para a versão com Briot-Ruffini:
-
+Para a versão com Briot-Ruffini:  
 python Newton-Briot-Ruffini.py
 
 Siga as instruções na tela para inserir os coeficientes do polinômio.
