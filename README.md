@@ -84,16 +84,17 @@ Certifique-se de ter o **Python 3.x** instalado. Você pode baixá-lo em [python
 
 git clone https://github.com/SeuUsuario/SeuRepositorio.git  
 cd SeuRepositorio  
+
 Ou baixe diretamente:  
 Baixe o repositório como ZIP via GitHub e extraia os arquivos em uma pasta local.
 
-3. Instale as Dependências
+### 3. Instale as Dependências
 No terminal, dentro da pasta do projeto:  
 pip install sympy numpy  
 
 Nota: sympy é necessário apenas para o script com SymPy.
 
-4. Execute os Scripts
+### 4. Execute os Scripts
 Para a versão com SymPy:  
 python Newton-Raphson.py
 
