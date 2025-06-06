@@ -82,7 +82,7 @@ Certifique-se de ter o **Python 3.x** instalado. Você pode baixá-lo em [python
 
 #### Se você usa Git:
 
-git clone https://github.com/SeuUsuario/SeuRepositorio.git  
+git clone https://github.com/MortoFantasma/Zero_de_Polinomio.git  
 cd SeuRepositorio  
 
 Ou baixe diretamente:  
