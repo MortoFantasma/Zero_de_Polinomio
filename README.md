@@ -103,6 +103,10 @@ python Newton-Briot-Ruffini.py
 
 Siga as instruções na tela para inserir os coeficientes do polinômio.
 
+---
+
 Observação: Ambos os métodos procuram raízes reais dos polinômios. Se você deseja buscar também raízes complexas, será necessário adaptar os scripts ou utilizar bibliotecas específicas para esse fim.
+
+---
 
 Desenvolvido com fins educacionais e científicos.
