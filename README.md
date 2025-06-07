@@ -1,6 +1,6 @@
 # Métodos de Newton para Encontrar Raízes
 
-Este repositório apresenta duas implementações do método de Newton-Raphson para localizar raízes reais de polinômios. Cada script adota uma estratégia distinta para o cálculo da função e sua derivada, explorando as vantagens de bibliotecas de álgebra simbólica e de algoritmos numéricos eficientes.
+Este repositório apresenta duas implementações do método de Newton-Raphson para localizar raízes reais de polinômios. Cada script adota uma estratégia distinta para o cálculo da função e sua derivada, explorando as vantagens de bibliotecas de álgebra simbólica e de algoritmos numéricos eficientes. Porem com limitações para polinômios com raizes muito próximas ou com multiplicidade ≥ 2. 
 
 ---
 
