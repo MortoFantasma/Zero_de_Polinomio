@@ -57,7 +57,7 @@ def encontrar_raizes_reais_newton(coefs, display_precision=14):
     """
     raizes_e_erros_encontrados = []
     # Teste muitos pontos para tentar achar todas as raízes.
-    for x0_inicial in np.linspace(-500, 500, 1000): 
+    for x0_inicial in np.linspace(-500, 500, 10001): 
         result = newton_raphson(coefs, x0_inicial, display_precision=display_precision) 
         if result is not None:
             raiz, erro, tipo_erro = result 
