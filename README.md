@@ -74,7 +74,7 @@ Erro absoluto: 0.00e+00
 
 ### 1. Instale o Python
 
-Certifique-se de ter o **Python 3.x** instalado. Você pode baixá-lo em [python.org](https://www.python.org/).
+Certifique-se de ter o **Python** instalado. Você pode baixá-lo em [python.org](https://www.python.org/).
 
 ---
 
