@@ -43,7 +43,7 @@ def newton_raphson(coefs, x0, tol=1e-12, max_iter=1000, display_precision=14):
         if abs(f_prime_x_n) < tol:
             return None 
             
-        x_n1 = x_n - fx_n / f_prime_x_n # Calcula a próxima estimativa da raiz
+        x_n1 = x_n - fx_n / f_prime_x_n # Calcula a próxima estimativa da raiz.
         
         # Verifica se a raiz foi encontrada com precisão suficiente.
         if abs(x_n1 - x_n) < tol:
@@ -85,6 +85,52 @@ def encontrar_raizes_reais_newton(coefs, display_precision=14):
     raizes_e_erros_encontrados.sort(key=lambda x: x[0]) # Organiza as raízes em ordem.
     return raizes_e_erros_encontrados
 
+def descartes_rule_of_signs(coefs):
+    """
+    Aplica a Regra de Sinais de Descartes para prever o número máximo de raízes reais positivas e negativas.
+
+    Parâmetros:
+    coefs (list): Coeficientes do polinômio, do maior grau ao termo independente.
+
+    Retorna:
+    tuple: Uma tupla (max_pos_roots, max_neg_roots)
+    """
+    # Remove coeficientes zero para a análise de sinais
+    non_zero_coefs = [c for c in coefs if c != 0]
+
+    # Conta mudanças de sinal para P(x) (raízes positivas)
+    sign_changes_pos = 0
+    if non_zero_coefs:
+        current_sign = np.sign(non_zero_coefs[0])
+        for i in range(1, len(non_zero_coefs)):
+            if np.sign(non_zero_coefs[i]) != current_sign:
+                sign_changes_pos += 1
+                current_sign = np.sign(non_zero_coefs[i])
+
+    # Gera coeficientes para P(-x) (raízes negativas)
+    # P(-x) = a_n*(-x)^n + a_{n-1}*(-x)^{n-1} + ... + a_1*(-x)^1 + a_0
+    # O sinal de cada termo a_i*(-x)^i muda se 'i' for ímpar.
+    coefs_neg_x = []
+    for i, c in enumerate(coefs):
+        if (len(coefs) - 1 - i) % 2 != 0: # Se o grau do termo for ímpar
+            coefs_neg_x.append(-c)
+        else:
+            coefs_neg_x.append(c)
+    
+    # Remove coeficientes zero para a análise de sinais de P(-x)
+    non_zero_coefs_neg = [c for c in coefs_neg_x if c != 0]
+
+    # Conta mudanças de sinal para P(-x) (raízes negativas)
+    sign_changes_neg = 0
+    if non_zero_coefs_neg:
+        current_sign = np.sign(non_zero_coefs_neg[0])
+        for i in range(1, len(non_zero_coefs_neg)):
+            if np.sign(non_zero_coefs_neg[i]) != current_sign:
+                sign_changes_neg += 1
+                current_sign = np.sign(non_zero_coefs_neg[i])
+
+    return sign_changes_pos, sign_changes_neg
+
 if __name__ == "__main__":
     PRECISAO_EXIBICAO = 14 # Quantidade de casas decimais para mostrar as raízes.
 
@@ -100,19 +146,60 @@ if __name__ == "__main__":
     if not coefs:
         print("Erro: Nenhum número foi digitado.")
         exit()
+    
+    # Aplica a Regra de Sinais de Descartes
+    max_pos, max_neg = descartes_rule_of_signs(coefs)
+
+    # Constrói a string de possibilidades para raízes positivas
+    possible_pos_roots = []
+    for i in range(max_pos, -1, -2):
+        possible_pos_roots.append(str(i))
+    pos_display = ", ".join(possible_pos_roots)
+
+    # Constrói a string de possibilidades para raízes negativas
+    possible_neg_roots = []
+    for i in range(max_neg, -1, -2):
+        possible_neg_roots.append(str(i))
+    neg_display = ", ".join(possible_neg_roots)
+
+    print(f"\nPrevisão da Regra de Sinais de Descartes:")
+    print(f"  Máximo de raízes reais positivas: {pos_display}")
+    print(f"  Máximo de raízes reais negativas: {neg_display}")
+
 
     print(f"\nBuscando raízes reais para o polinômio com coeficientes: {coefs}")
     raizes_e_erros_reais = encontrar_raizes_reais_newton(coefs, display_precision=PRECISAO_EXIBICAO)
 
     if raizes_e_erros_reais:
         print("\nRaízes reais encontradas (via Newton-Briot-Ruffini):")
+        
+        # Inicializa contadores para raízes positivas, negativas e zero
+        positive_roots_count = 0
+        negative_roots_count = 0
+        zero_roots_count = 0
+
         for r, erro, tipo_erro in raizes_e_erros_reais:
+            # Classifica a raiz como positiva, negativa ou zero
+            if r > 1e-9: # Considera valores muito próximos de zero como zero
+                positive_roots_count += 1
+            elif r < -1e-9: # Considera valores muito próximos de zero como zero
+                negative_roots_count += 1
+            else:
+                zero_roots_count += 1
+
             # Mostra a raiz como número inteiro ou com as casas decimais definidas.
             if abs(r - round(r)) < 1e-5:
                 print(f"  Raiz: {int(round(r))}")
             else:
                 print(f"  Raiz: {r:.{PRECISAO_EXIBICAO}f}")
             print(f"  Erro {tipo_erro}: {erro:.2e}") # Mostra o erro.
+        
+        # Exibe o resumo das raízes
+        print("\nResumo das Raízes Reais Encontradas Numericamente:")
+        print(f"  Positivas: {positive_roots_count}")
+        print(f"  Negativas: {negative_roots_count}")
+        print(f"  Zero: {zero_roots_count}")
+
     else:
         print("\nNenhuma raiz real foi encontrada com os pontos iniciais testados.")
         print("Dica: Tente mudar o **intervalo** e a **quantidade de pontos iniciais** em `np.linspace` (linha 72).")

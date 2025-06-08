@@ -14,7 +14,9 @@ Este script oferece uma abordagem para o método de Newton-Raphson que se benefi
 
 O coração deste método reside na utilização da biblioteca **SymPy**, que é uma biblioteca Python para matemática simbólica. Com ela, podemos definir o polinômio de forma simbólica e, em seguida, usar a função `sp.diff()` para obter a derivada exata. Depois disso, `sp.lambdify()` é usado para converter a expressão simbólica em uma função numérica eficiente com **NumPy**.
 
-A principal vantagem desta abordagem é a precisão inquestionável da derivada, pois ela é calculada analiticamente. No entanto, para polinômios de grau muito elevado, o custo do cálculo simbólico pode ser um fator a considerar.
+A principal vantagem desta abordagem é a precisão inquestionável da derivada, pois ela é calculada analiticamente. No entanto, para polinômios de grau muito elevado, o custo do cálculo simbólico pode ser um fator a considerar.  
+
+Além disso, antes da busca numérica, o script aplica a Regra de Sinais de Descartes para prever o número máximo de raízes reais positivas e negativas.  
 
 #### Exemplo de Uso
 
@@ -25,15 +27,24 @@ Exemplo: para x² - 4, digite: 1 0 -4
 
 1 0 -4  
 
-Saída esperada:
+##### Saída esperada:
+
+Previsão da Regra de Sinais de Descartes:  
+  Máximo de raízes reais positivas: 1  
+  Máximo de raízes reais negativas: 1  
 
 Buscando raízes reais para o polinômio com coeficientes: [1.0, 0.0, -4.0]  
 
 Raízes reais encontradas (via Newton-Raphson):  
-Raiz: -2  
-Erro absoluto: 0.00e+00  
-Raiz: 2  
-Erro absoluto: 0.00e+00  
+  Raiz: -2  
+  Erro relativo: 1.18e-14  
+  Raiz: 2  
+  Erro relativo: 0.00e+00  
+
+Resumo das Raízes Reais Encontradas Numericamente:  
+  Positivas: 1  
+  Negativas: 1  
+  Zero: 0  
 
 ---
 
@@ -45,7 +56,9 @@ Esta versão do método é projetada para ser eficiente e puramente numérica, u
 
 O algoritmo de **Briot-Ruffini** (ou divisão sintética) permite calcular o valor de um polinômio `P(x)` e de sua derivada `P′(x)` em um ponto `x₀` de forma muito eficiente, operando diretamente sobre os coeficientes do polinômio. A técnica envolve duas divisões sintéticas consecutivas para obter `P(x₀)` e `P′(x₀)`.
 
-A principal vantagem é o desempenho, pois evita dependências simbólicas, tornando-o ideal para ambientes com restrições de performance ou bibliotecas.
+A principal vantagem é o desempenho, pois evita dependências simbólicas, tornando-o ideal para ambientes com restrições de performance ou bibliotecas.  
+
+Similarmente, antes da busca numérica, o script aplica a Regra de Sinais de Descartes para prever o número máximo de raízes reais positivas e negativas.  
 
 #### Exemplo de Uso
 
@@ -56,17 +69,26 @@ Exemplo: para x³ − 6x² + 11x − 6, digite: 1 -6 11 -6
 
 1 -6 11 -6  
 
-Saída esperada:
+##### Saída esperada:  
+
+Previsão da Regra de Sinais de Descartes:  
+  Máximo de raízes reais positivas: 3, 1  
+  Máximo de raízes reais negativas: 0  
 
 Buscando raízes reais para o polinômio com coeficientes: [1.0, -6.0, 11.0, -6.0]  
 
 Raízes reais encontradas (via Newton-Briot-Ruffini):  
-Raiz: 1  
-Erro absoluto: 0.00e+00  
-Raiz: 2  
-Erro absoluto: 0.00e+00  
-Raiz: 3  
-Erro absoluto: 0.00e+00  
+  Raiz: 1  
+  Erro relativo: 5.82e-14  
+  Raiz: 2  
+  Erro relativo: 0.00e+00  
+  Raiz: 3  
+  Erro relativo: 0.00e+00  
+
+Resumo das Raízes Reais Encontradas Numericamente:  
+  Positivas: 3  
+  Negativas: 0  
+  Zero: 0  
 
 ---
 
@@ -82,8 +104,8 @@ Certifique-se de ter o **Python** instalado. Você pode baixá-lo em [python.org
 
 #### Se você usa Git:
 
-git clone https://github.com/MortoFantasma/Zero_de_Polinomio.git  
-cd SeuRepositorio  
+git clone https://github.com/MauricioDSartori/Zero_de_Polinomio.git  
+cd caminho/para/o/SeuRepositorio  
 
 Ou baixe diretamente:  
 Baixe o repositório como ZIP via GitHub e extraia os arquivos em uma pasta local.
